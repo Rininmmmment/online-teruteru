@@ -27,9 +27,10 @@ function HomeContent() {
     };
 
     const handleShare = () => {
-        const text = `てるてる坊主を作りました！\n希望日: ${dateParam}\n名前: ${memoParam || '名無し'}`;
+        // Just share the title and URL to avoid clutter
+        // LINE will generate the card preview from the URL
+        const text = `${dateParam}の天気願い`;
         const shareUrl = window.location.href;
-        // Add a newline before the URL to ensure it separates clearly
         const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text + '\n' + shareUrl)}`;
         window.open(lineUrl, '_blank');
     };

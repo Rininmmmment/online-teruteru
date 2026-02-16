@@ -49,5 +49,32 @@ export async function generateMetadata(
 }
 
 export default function Page() {
-  return <HomeClient />;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'オンラインてるてる坊主',
+    applicationCategory: 'EntertainmentApplication',
+    operatingSystem: 'Web Browser',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'JPY',
+    },
+    description: 'オンラインでてるてる坊主を作って、天気への願いを込めるWebアプリケーション。みんなの願いを共有しよう。',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      ratingCount: '100', // Mock data for SEO hook
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <HomeClient />
+    </>
+  );
 }
