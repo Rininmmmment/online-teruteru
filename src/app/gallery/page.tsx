@@ -17,7 +17,7 @@ export default function GalleryPage() {
             <main className={styles.main}>
                 <div className={styles.header}>
                     <Link href="/" className={styles.backButton}>← 戻る</Link>
-                    <h1 className={styles.title}>みんなの願い</h1>
+                    <h1 className={styles.title}>みんなのてるてる坊主</h1>
                 </div>
 
                 <div className={styles.filterContainer}>

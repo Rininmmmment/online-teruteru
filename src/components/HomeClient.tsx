@@ -29,7 +29,7 @@ function HomeContent() {
     const handleShare = () => {
         // Just share the title and URL to avoid clutter
         // LINE will generate the card preview from the URL
-        const text = `${dateParam}の天気願い`;
+        const text = `${dateParam}のてるてる坊主`;
         const shareUrl = window.location.href;
         const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text + '\n' + shareUrl)}`;
         window.open(lineUrl, '_blank');
@@ -44,7 +44,7 @@ function HomeContent() {
                 {hasContent ? (
                     <div className={styles.glassPanel}>
                         <h1 className={styles.title}>
-                            {dateParam ? `${dateParam}の天気願い` : 'てるてる坊主'}
+                            {dateParam ? `${dateParam}のてるてる坊主` : 'てるてる坊主'}
                         </h1>
                         <div className={styles.bozuWrapper}>
                             <TeruTeruBozu
@@ -64,7 +64,7 @@ function HomeContent() {
                         </div>
 
                         <Link href="/gallery" className={styles.galleryLink}>
-                            みんなの願いを見る
+                            みんなのてるてる坊主を見る
                         </Link>
                     </div>
                 ) : (
@@ -73,7 +73,7 @@ function HomeContent() {
                         <CreatorForm onCreate={handleCreate} />
 
                         <Link href="/gallery" className={styles.galleryLink}>
-                            みんなの願いを見る
+                            みんなのてるてる坊主を見る
                         </Link>
                     </div>
                 )}
