@@ -27,9 +27,10 @@ function HomeContent() {
     };
 
     const handleShare = () => {
-        const text = `てるてる坊主を作りました！\n希望日: ${dateParam}\n願い: ${memoParam || '秘密'}`;
+        const text = `てるてる坊主を作りました！\n希望日: ${dateParam}\n名前: ${memoParam || '名無し'}`;
         const shareUrl = window.location.href;
-        const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text)}%20${encodeURIComponent(shareUrl)}`;
+        // Add a newline before the URL to ensure it separates clearly
+        const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(text + '\n' + shareUrl)}`;
         window.open(lineUrl, '_blank');
     };
 

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './CalendarModal.module.css';
 
 type Props = {
@@ -11,8 +12,14 @@ const WEEKDAYS = ['日', '月', '火', '水', '木', '金', '土'];
 
 export default function CalendarModal({ isOpen, onClose, onSelect }: Props) {
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [mounted, setMounted] = useState(false);
 
-    if (!isOpen) return null;
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
+
+    if (!isOpen || !mounted) return null;
 
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -62,7 +69,7 @@ export default function CalendarModal({ isOpen, onClose, onSelect }: Props) {
         );
     }
 
-    return (
+    return createPortal(
         <div className={styles.overlay} onClick={onClose}>
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.header}>
@@ -84,6 +91,7 @@ export default function CalendarModal({ isOpen, onClose, onSelect }: Props) {
                 </div>
                 <button type="button" onClick={onClose} className={styles.cancelButton}>閉じる</button>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }

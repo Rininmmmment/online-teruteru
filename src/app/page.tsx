@@ -14,9 +14,13 @@ export async function generateMetadata(
   const type = params.type || 'normal';
 
   // Base URL calculation (needs to be absolute for OG)
-  // In dev: localhost:3000, In prod: actual URL
-  // We can use process.env.NEXT_PUBLIC_BASE_URL if set, or generic fallback
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  // Vercel automatically sets VERCEL_URL (without https)
+  // If NEXT_PUBLIC_BASE_URL is set, use it. Otherwise try VERCEL_URL, then localhost.
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+    ? process.env.NEXT_PUBLIC_BASE_URL
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000';
 
   const ogUrl = new URL(`${baseUrl}/api/og`);
   if (date) ogUrl.searchParams.set('date', date as string);

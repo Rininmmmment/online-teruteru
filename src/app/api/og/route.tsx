@@ -29,7 +29,7 @@ export async function GET(request: Request) {
             >
                 {/* Title */}
                 <div style={{ fontSize: 40, fontWeight: 'bold', color: textColor, marginBottom: 20 }}>
-                    {date ? `${date}の天気願い` : 'オンラインてるてる坊主'}
+                    {date ? `${date}のてるてる坊主` : 'オンラインてるてる坊主'}
                 </div>
 
                 {/* Teru Teru Bozu Representation (Simplified for OG) */}
@@ -66,7 +66,7 @@ export async function GET(request: Request) {
                     }}></div>
                 </div>
 
-                {/* Tag/Memo */}
+                {/* Tag/Name */}
                 {memo && (
                     <div style={{
                         marginTop: 40,
@@ -75,9 +75,13 @@ export async function GET(request: Request) {
                         borderRadius: 20,
                         fontSize: 30,
                         color: textColor,
-                        boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+                        boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 10
                     }}>
-                        {memo}
+                        <span style={{ fontSize: 20, opacity: 0.7 }}>名前:</span>
+                        <span>{memo}</span>
                     </div>
                 )}
             </div>

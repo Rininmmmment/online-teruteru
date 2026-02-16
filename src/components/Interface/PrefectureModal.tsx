@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './PrefectureModal.module.css';
 
 type Props = {
@@ -16,9 +18,16 @@ const REGIONS = [
 ];
 
 export default function PrefectureModal({ isOpen, onClose, onSelect }: Props) {
-    if (!isOpen) return null;
+    const [mounted, setMounted] = useState(false);
 
-    return (
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
+
+    if (!isOpen || !mounted) return null;
+
+    return createPortal(
         <div className={styles.overlay} onClick={onClose}>
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.header}>
@@ -47,6 +56,7 @@ export default function PrefectureModal({ isOpen, onClose, onSelect }: Props) {
                     ))}
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
