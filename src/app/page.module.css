@@ -1,141 +1,147 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
 .main {
-  display: flex;
-  min-height: 100vh;
   width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 60vh;
+  position: relative;
+  z-index: 2;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.title {
+  font-size: 1.4rem;
+  /* Even smaller */
+  /* Reduced from 2rem */
+  color: #333;
+  /* Dark text for better visibility on Sky Blue */
+  margin-bottom: 8px;
+  /* Slightly increased from 2px */
+  text-align: center;
+  margin-top: 20px;
+  /* Increased top margin */
+  font-weight: bold;
+  letter-spacing: 0.05em;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.subtitle {
+  color: #555;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
+.viewer {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  /* Tight gap */
+  /* Reduced from 40px */
 }
 
-.ctas a {
+.bozuWrapper {
+  transform: scale(1.0);
+  /* Reset scale */
+  /* Slightly smaller scale */
+  margin: 0;
+  /* Remove margin */
+  /* Reduced from 40px */
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.shareButton {
+  background: #06C755;
+  /* LINE Green */
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
+  transition: all 0.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
-}
-
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
   gap: 8px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.shareButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(6, 199, 85, 0.4);
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text-main);
+  border: none;
+  padding: 14px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.secondaryButton:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-  .page {
-    --background: #000;
-    --foreground: #000;
+.galleryLink {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: 2px solid white;
+  transition: all 0.2s ease;
+  display: inline-block;
+  letter-spacing: 0.05em;
+}
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+.galleryLink:hover {
+  transform: translateY(-2px);
+  background: white;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+  color: var(--accent-pink);
+}
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.glassPanel {
+  background: rgba(255, 255, 255, 0.4);
+  /* Increased opacity from var(--glass-bg) */
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  /* Higher contrast border */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 94%;
+  max-width: 420px;
+  margin: 10px 0;
 }

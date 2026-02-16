@@ -1,0 +1,54 @@
+.sky {
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: background 1s ease;
+    overflow: hidden;
+}
+
+.sunny {
+    background-color: var(--bg-sunny);
+}
+
+.rainy {
+    background-color: var(--bg-rainy);
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding-top: 100px;
+    /* Space for the sun */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sun {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    background: #ffeb3b;
+    border-radius: 50%;
+    box-shadow: 0 0 40px #ffeb3b;
+    animation: sunPulse 4s infinite alternate;
+}
+
+@keyframes sunPulse {
+    from {
+        transform: scale(1);
+        box-shadow: 0 0 40px #ffeb3b;
+    }
+
+    to {
+        transform: scale(1.1);
+        box-shadow: 0 0 60px #ffeb3b;
+    }
+}

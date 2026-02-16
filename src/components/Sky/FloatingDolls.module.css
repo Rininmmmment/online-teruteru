@@ -1,0 +1,39 @@
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    /* Let clicks pass through to background/interactive elements */
+    z-index: 0;
+    /* Below the main content */
+    overflow: hidden;
+
+    /* Structured Layout */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    padding: 240px 20px 60px;
+    /* Increased top padding further */
+    gap: 30px;
+}
+
+.floatingDoll {
+    position: relative;
+    /* Changed from absolute */
+    opacity: 0.8;
+    /* transition removed to prevent sliding on load */
+    animation: float 6s infinite ease-in-out alternate;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-10px);
+        /* Reduced movement */
+    }
+}

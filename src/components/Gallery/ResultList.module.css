@@ -1,0 +1,130 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    /* Reduced */
+    padding: 15px;
+    /* Reduced */
+    background: var(--glass-bg);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(10px);
+}
+
+.title {
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    /* Smaller */
+    font-weight: bold;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Reduced gap */
+}
+
+.card {
+    padding: 12px;
+    /* Smaller padding */
+    border: none;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Tighter gap */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+}
+
+/* Status Indicator Bar */
+.card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    /* Thinner bar */
+    background: #ddd;
+}
+
+.success::before {
+    background: #81C784;
+}
+
+.fail::before {
+    background: #FF8A80;
+}
+
+.success {
+    background: #fff;
+}
+
+.fail {
+    background: #fff;
+}
+
+.date {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.memo {
+    font-weight: bold;
+    font-size: 1rem;
+    /* Smaller */
+    color: var(--text-main);
+    margin: 2px 0;
+}
+
+.outcome {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    margin-top: 4px;
+    background: #f9f9f9;
+    padding: 6px;
+    /* Compact padding */
+    border-radius: 6px;
+}
+
+.badge {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #eee;
+    font-size: 0.75rem;
+}
+
+.success .badge {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.fail .badge {
+    background: #FFEBEE;
+    color: #C62828;
+}
+
+.empty {
+    text-align: center;
+    color: var(--text-light);
+    padding: 40px;
+    font-size: 1.1rem;
+}
