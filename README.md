@@ -2,6 +2,7 @@
 https://online-teruteru.vercel.app/
 
 てるてる坊主を作成できます。
+名前は自由に入力できるため、お手やわらかにお願いします。
 
 <br>
 <img width="1290" height="2796" alt="online-teruteru vercel app_(iPhone 14 Pro Max) (2)" src="https://github.com/user-attachments/assets/f12e94ad-a720-4a43-9cbb-4283339d8ca9" />
