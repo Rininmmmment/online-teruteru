@@ -5,6 +5,7 @@ import TeruTeruBozu from '@/components/TeruTeruBozu/TeruTeruBozu';
 import Link from 'next/link';
 import styles from './page.module.css';
 import WishClient from './WishClient';
+import { getBaseUrl } from '@/lib/utils';
 
 type Props = {
     params: Promise<{ id: string }>
@@ -29,13 +30,7 @@ export async function generateMetadata(
             title = `${doll.date}の天気願い | オンラインてるてる坊主`;
             description = `願い事: ${doll.memo}`;
 
-            // Base URL used in root layout or page
-            const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
-                ? process.env.NEXT_PUBLIC_BASE_URL
-                : process.env.VERCEL_URL
-                    ? `https://${process.env.VERCEL_URL}`
-                    : 'http://localhost:3000';
-
+            const baseUrl = getBaseUrl();
             const ogUrl = new URL(`${baseUrl}/api/og`);
             ogUrl.searchParams.set('date', doll.date);
             ogUrl.searchParams.set('memo', doll.memo);
@@ -110,8 +105,8 @@ export default async function WishPage({ params, searchParams }: Props) {
 
                     <WishClient
                         isCreated={isCreated}
-                        shareText={`${doll.date}の天気願い`}
-                        shareUrl={process.env.NEXT_PUBLIC_BASE_URL ? `${process.env.NEXT_PUBLIC_BASE_URL}/wish/${id}` : `http://localhost:3000/wish/${id}`}
+                        shareText={`${doll.date}にオンラインてるてる坊主を作りました！`}
+                        shareUrl={`${getBaseUrl()}/wish/${id}`}
                     />
                 </div>
             </main>
