@@ -1,17 +1,29 @@
 import HomeClient from '@/components/HomeClient';
 import { Metadata } from 'next';
 
-type Props = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
-
 export async function generateMetadata(
   { searchParams }: Props
 ): Promise<Metadata> {
   const params = await searchParams;
-  const date = params.date || '';
-  const memo = params.memo || '';
-  const type = params.type || 'normal';
+  const idStr = params.id;
+
+  let date = params.date || '';
+  let memo = params.memo || '';
+  let type = params.type || 'normal';
+
+  // If ID is present, fetch from DB to ensure data integrity for sharing
+  if (idStr) {
+    const id = parseInt(idStr as string, 10);
+    if (!isNaN(id)) {
+      const repo = new SupabaseTeruTeruBozuRepository();
+      const doll = await repo.findById(id);
+      if (doll) {
+        date = doll.date;
+        memo = doll.memo;
+        type = doll.type;
+      }
+    }
+  }
 
   // Base URL calculation (needs to be absolute for OG)
   // Vercel automatically sets VERCEL_URL (without https)
@@ -25,7 +37,7 @@ export async function generateMetadata(
   const ogUrl = new URL(`${baseUrl}/api/og`);
   if (date) ogUrl.searchParams.set('date', date as string);
   if (memo) ogUrl.searchParams.set('memo', memo as string);
-  if (type) ogUrl.searchParams.set('type', type as string);
+  if (type) ogUrl.searchParams.set('type', type as string as string);
 
   const title = date
     ? `${date}の天気願い | オンラインてるてる坊主`

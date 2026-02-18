@@ -22,6 +22,18 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 600px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+
 .backButton {
     background: rgba(255, 255, 255, 0.3);
     color: white;
