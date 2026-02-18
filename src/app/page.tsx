@@ -1,5 +1,11 @@
 import HomeClient from '@/components/HomeClient';
 import { Metadata } from 'next';
+import { SupabaseTeruTeruBozuRepository } from '@/infrastructure/repositories/SupabaseTeruTeruBozuRepository';
+
+type Props = {
+  params: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 export async function generateMetadata(
   { searchParams }: Props
