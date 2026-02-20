@@ -1,6 +1,7 @@
 import HomeClient from '@/components/HomeClient';
 import { Metadata } from 'next';
 import { SupabaseTeruTeruBozuRepository } from '@/infrastructure/repositories/SupabaseTeruTeruBozuRepository';
+import { getBaseUrl } from '@/lib/utils';
 
 type Props = {
   params: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -32,13 +33,7 @@ export async function generateMetadata(
   }
 
   // Base URL calculation (needs to be absolute for OG)
-  // Vercel automatically sets VERCEL_URL (without https)
-  // If NEXT_PUBLIC_BASE_URL is set, use it. Otherwise try VERCEL_URL, then localhost.
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
-    ? process.env.NEXT_PUBLIC_BASE_URL
-    : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000';
+  const baseUrl = getBaseUrl();
 
   const ogUrl = new URL(`${baseUrl}/api/og`);
   if (date) ogUrl.searchParams.set('date', date as string);

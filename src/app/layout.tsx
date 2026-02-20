@@ -1,3 +1,4 @@
+import { getBaseUrl } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Zen_Maru_Gothic } from "next/font/google";
 import "./globals.css";
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')),
+  metadataBase: new URL(getBaseUrl()),
 };
 
 export default function RootLayout({
